@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Form</title>
+</head>
+<body>
+
+<div id="formContainer"></div>
+
+<script>
+    // Create form elements
+    const form = document.createElement('form');
+    form.id = 'myForm';
+
+    const nameLabel = document.createElement('label');
+    nameLabel.setAttribute('for', 'name');
+    nameLabel.textContent = 'Name: ';
+    form.appendChild(nameLabel);
+
+    const nameInput = document.createElement('input');
+    nameInput.setAttribute('type', 'text');
+    nameInput.setAttribute('id', 'name');
+    nameInput.setAttribute('name', 'name');
+    form.appendChild(nameInput);
+
+    const emailLabel = document.createElement('label');
+    emailLabel.setAttribute('for', 'email');
+    emailLabel.textContent = 'Email: ';
+    form.appendChild(emailLabel);
+
+    const emailInput = document.createElement('input');
+    emailInput.setAttribute('type', 'email');
+    emailInput.setAttribute('id', 'email');
+    emailInput.setAttribute('name', 'email');
+    form.appendChild(emailInput);
+
+    const messageLabel = document.createElement('label');
+    messageLabel.setAttribute('for', 'message');
+    messageLabel.textContent = 'Message: ';
+    form.appendChild(messageLabel);
+
+    const messageTextarea = document.createElement('textarea');
+    messageTextarea.setAttribute('id', 'message');
+    messageTextarea.setAttribute('name', 'message');
+    form.appendChild(messageTextarea);
+
+    const submitButton = document.createElement('button');
+    submitButton.setAttribute('type', 'submit');
+    submitButton.textContent = 'Submit';
+    form.appendChild(submitButton);
+
+    // Append form to container
+    const formContainer = document.getElementById('formContainer');
+    formContainer.appendChild(form);
+
+    // Add event listener to the form
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+        
+        // Get form data
+        const formData = new FormData(form);
+        
+        // Convert form data to object
+        const formValues = {};
+        formData.forEach((value, key) => {
+            formValues[key] = value;
+        });
+        
+        // Output form data
+        console.log("Form data:", formValues);
+    });
+</script>
+
+</body>
+</html>
